@@ -1,0 +1,26 @@
+{
+  "name": "meeti",
+  "version": "1.0.0",
+  "description": "Proyecto meeti con node, PostgresSQL y EJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambaraguirre/meeti.git"
+  },
+  "author": "Ambar Aguirre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambaraguirre/meeti/issues"
+  },
+  "homepage": "https://github.com/ambaraguirre/meeti#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
+    "nodemon": "^3.1.4"
+  }
+}

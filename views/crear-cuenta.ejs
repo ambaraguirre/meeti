@@ -1,0 +1,33 @@
+<main class="contenedor contenedor-formularios">
+    <h1>
+        <%= nombrePagina%>
+    </h1>
+
+    <form action="/crear-cuenta" method="post" class="default-form">
+
+        <div class="campo">
+            <labe>Nombre</label>
+            <input type="text" name="nombre" placeholder="Tu Nombre">
+        </div>
+
+        <div class="campo">
+            <labe>E-mail</label>
+            <input type="email" name="email" placeholder="Tu email">
+        </div>
+
+        <div class="campo">
+            <labe>Password</label>
+            <input type="password" name="password" placeholder="Tu password">
+        </div>
+
+        <div class="campo">
+            <labe>Repetir password</label>
+            <input type="password" name="repetir" placeholder="Repite tu password">
+        </div>
+
+        <div class="campo enviar">
+            <input type="submit" class="btn-rosa btn" value="Crear Cuenta">
+        </div>
+
+    </form>
+</main>
