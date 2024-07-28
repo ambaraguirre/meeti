@@ -13,6 +13,7 @@ const passport = require('./config/passport');
 const db = require('./config/db');
 require('./models/Usuarios');
 require('./models/Categorias');
+require('./models/Grupos');
 db.sync().then(()=> console.log("Db conectada")).catch((error)=>console.log(error));
 
 
