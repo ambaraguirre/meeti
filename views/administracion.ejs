@@ -1,5 +1,7 @@
 <main class="contenedor panel-administracion">
-    <h1><%= nombrePagina  %></h1>
+    <h1>
+        <%= nombrePagina %>
+    </h1>
 
     <div class="contenedor-botones">
         <a href="/nuevo-grupo" class="btn btn-amarillo">Nuevo Grupo</a>
@@ -41,39 +43,26 @@
 
     <div class="seccion-admin">
         <h2>Tus grupos</h2>
-        <ul>
-            <li>
-                <div class="informacion-admin">
-                    <h3>BlockChain Guadalajara</h3>
-                </div>
-                <div class="acciones contenedor-botones">
-                    <a href="" class="btn btn-verde">Editar</a>
-                    <a href="" class="btn btn-azul2">Imagen</a>
-                    <a href="" class="btn btn-rojo">Eliminar</a>
-                </div>
-            </li>
 
-            <li>
-                <div class="informacion-admin">
-                    <h3>GraphQl Guadalajara</h3>
-                </div>
-                <div class="acciones contenedor-botones">
-                    <a href="" class="btn btn-verde">Editar</a>
-                    <a href="" class="btn btn-azul2">Imagen</a>
-                    <a href="" class="btn btn-rojo">Eliminar</a>
-                </div>
-            </li>
-
-            <li>
-                <div class="informacion-admin">
-                    <h3>NodeJs Guadalajara</h3>
-                </div>
-                <div class="acciones contenedor-botones">
-                    <a href="" class="btn btn-verde">Editar</a>
-                    <a href="" class="btn btn-azul2">Imagen</a>
-                    <a href="" class="btn btn-rojo">Eliminar</a>
-                </div>
-            </li>
-        </ul>
+        <% if(grupos.length) { %>
+            <ul>
+                <% grupos.forEach(grupo=> { %>
+                    <li>
+                        <div class="informacion-admin">
+                            <h3>
+                                <%= grupo.nombre %>
+                            </h3>
+                        </div>
+                        <div class="acciones contenedor-botones">
+                            <a href="/editar-grupo/<%= grupo.id  %>" class="btn btn-verde">Editar</a>
+                            <a href="/imagen-grupo/<%= grupo.id  %>" class="btn btn-azul2">Imagen</a>
+                            <a href="/eliminar-grupo/<%= grupo.id  %>" class="btn btn-rojo">Eliminar</a>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } else { %>
+                <p>No tienes grupos creados</p>
+            <% } %>
     </div>
 </main>

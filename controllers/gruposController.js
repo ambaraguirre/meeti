@@ -96,3 +96,53 @@ exports.crearGrupo = async(req, res) =>{
     }
 }
 
+exports.formEditarGrupo = async(req, res)=>{
+    const consultas = [];
+    consultas.push(Grupos.findByPk(req.params.grupoId))
+    consultas.push(Categorias.findAll())
+
+    //promise con await
+   const [grupo, categorias] =  await Promise.all(consultas);
+
+    res.render('editar-grupo',{
+        nombrePagina: `Editar Grupo : ${grupo.nombre}`,
+        grupo,
+        categorias
+    })
+}
+
+//guarda los cambios en la bd
+exports.editarGrupo = async (req, res, next) =>{
+    const grupo = await Grupos.findOne({where:{id: req.params.grupoId, usuarioId: req.user.id}})
+
+    //si no existe ese grupo no es el dueño
+    if(!grupo){
+        req.flash('error', 'Operación no valida');
+        res.redirect('/administracion');
+        return next();
+    }
+
+    //todo bien leer los valores
+    const { nombre, descripcion, categoriaId, url} = req.body;
+
+    //asignar valores
+    grupo.nombre = nombre;
+    grupo.descripcion =descripcion;
+    grupo.categoriaId = categoriaId;
+    grupo.url = url;
+
+    //guardar en la bd
+    await grupo.save();
+    req.flash('exito', 'Cambios guardados correctamente');
+    res.redirect('/administracion');
+ }
+
+ //muestra el formulario para editar la imagen de grupo
+ exports.formEditarImagen = async(req,res)=>{
+    const grupo = await Grupos.findByPk(req.params.grupoId);
+
+    res.render('imagen-grupo',{
+        nombrePagina : `Editar Imagen Grupo : ${grupo.nombre} `,
+        grupo
+    })
+ }
