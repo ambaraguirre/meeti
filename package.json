@@ -4,7 +4,7 @@
   "description": "Proyecto meeti con node, PostgresSQL y EJS",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon ./index.js",
+    "dev": "nodemon ./index.js",
     "start": "concurrently \"npm run dev \" \"npm run watch\" ",
     "watch": "webpack --watch --mode development"
   },
@@ -29,6 +29,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.18.0",
     "express-validator": "^7.1.0",
+    "leaflet-geosearch": "^4.0.0",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
