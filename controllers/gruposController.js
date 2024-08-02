@@ -4,7 +4,7 @@ const { check } = require('express-validator')
 const multer = require('multer')
 const shortId = require('shortid')
 const fs = require('fs');
-const { where } = require('sequelize')
+
 
 const configuracionMulter = {
 
