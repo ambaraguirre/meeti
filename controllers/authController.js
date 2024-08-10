@@ -19,3 +19,13 @@ exports.usuarioAutenticado = (req, res, next) =>{
     return res.redirect('/iniciar-sesion');
 }
 
+//cerrar sesion
+exports.cerrarSesion = (req, res, next)=>{
+    req.logout(function(error){
+        console.log(error);
+    })
+    req.flash('correcto', 'Cerraste Sesión correctamente');
+    res.redirect('/iniciar-sesion');
+    next();
+}
+

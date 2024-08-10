@@ -3,6 +3,7 @@ const db = require('../config/db');
 const bcrypt = require('bcrypt-nodejs');
 
 
+
 const Usuarios = db.define('usuarios', {
     id: {
         type: Sequelize.INTEGER,
@@ -11,6 +12,9 @@ const Usuarios = db.define('usuarios', {
     },
     nombre: Sequelize.STRING(60),
     imagen: Sequelize.STRING(60),
+    descripcion: {
+        type: Sequelize.TEXT
+    },  
     email:{
         type: Sequelize.STRING(30),
         allowNull: false,
@@ -40,7 +44,7 @@ const Usuarios = db.define('usuarios', {
 }, {
     hooks: {
         beforeCreate(usuario) {
-            usuario.password = bcrypt.hashSync(usuario.password, bcrypt.genSaltSync(10), null);
+            usuario.password = Usuarios.hashPassword(usuario.password)
         }
     }
 });
@@ -48,6 +52,10 @@ const Usuarios = db.define('usuarios', {
 //metodo para comparar los passwords
 Usuarios.prototype.validarPassword = function(password){
     return bcrypt.compareSync(password, this.password);
+}
+
+Usuarios.prototype.hashPassword = function(password){
+   return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 }
 
 module.exports = Usuarios;

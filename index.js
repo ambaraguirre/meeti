@@ -56,6 +56,7 @@ app.use(flash());
 
 //middleware propio (usuario logeado, flashmessages, fecha actual)
 app.use((req,res,next) =>{
+    res.locals.usuario = {...req.user} || null;
     res.locals.mensajes = req.flash();
     const fecha = new Date();
     res.locals.year = fecha.getFullYear();

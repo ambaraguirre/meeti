@@ -8,7 +8,6 @@ const fs = require('fs');
 
 const configuracionMulter = {
 
-
     limits: { fileSize: 100000 },
     storage: fileStorage = multer.diskStorage({
         destination: (req, file, next) => {

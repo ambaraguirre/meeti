@@ -393,10 +393,7 @@ main.contenedor-formularios {
     color: #0F4C5C;
     font-size: 1rem;
 }
-.campo input:read-only,
-.campo input:disabled {
-    background-color: #f7f6f6;
-}
+
 .campo input:read-only:hover,
 .campo input:disabled:hover {
     cursor: no-drop;
